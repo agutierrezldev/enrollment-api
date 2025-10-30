@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: enrollment
+    restart: always
+    environment:
+      POSTGRES_USER: axlgutierrezl
+      POSTGRES_PASSWORD: axlgutierrezl
+      POSTGRES_DB: enrollmentdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - enrollment-network
+
+volumes:
+  postgres_data:
+
+networks:
+  enrollment-network:
+    driver: bridge
