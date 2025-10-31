@@ -46,7 +46,7 @@ public class CourseController {
     public ResponseEntity<CourseDTO> save(@Valid @RequestBody CourseDTO courseDTO) throws Exception {
         log.info("CourseController - received request to save course {}", courseDTO);
         CourseDTO course = this.courseService.save(courseDTO);
-        URI location = URI.create("/v1/specialty/" + course.getId());
+        URI location = URI.create("/v1/courses/" + course.getId());
         return ResponseEntity.created(location).body(course);
     }
 

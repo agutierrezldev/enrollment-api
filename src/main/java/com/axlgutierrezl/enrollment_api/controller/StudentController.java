@@ -47,7 +47,7 @@ public class StudentController {
     public ResponseEntity<StudentDTO> save(@Valid @RequestBody StudentDTO studentDTO) throws Exception {
         log.info("StudentController - received request to save student {}", studentDTO);
         StudentDTO student = this.studentService.save(studentDTO);
-        URI location = URI.create("/v1/specialty/" + student.getId());
+        URI location = URI.create("/v1/students/" + student.getId());
         return ResponseEntity.created(location).body(student);
     }
 
